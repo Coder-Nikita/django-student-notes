@@ -1,0 +1,30 @@
+body{
+font-family: Arial;
+background:#f4f4f4;
+padding:40px;
+}
+
+h1{
+color:#333;
+}
+
+.note{
+background:white;
+padding:20px;
+margin-bottom:20px;
+border-radius:8px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+button{
+background:#4CAF50;
+color:white;
+border:none;
+padding:8px 15px;
+border-radius:5px;
+}
+
+a{
+text-decoration:none;
+margin-right:10px;
+}
