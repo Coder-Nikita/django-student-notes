@@ -9,6 +9,13 @@ def home(request):
     notes = Note.objects.filter(user=request.user)
     return render(request, "notes/home.html", {"notes": notes})
 
+
+@login_required
+def notes_list(request):
+    notes= Note.objects.filter(user=request.user)
+    return render(request, "notes/notes_list.html", {"notes" : notes})
+
+
 @login_required
 def add_note(request):
     if request.method == "POST":
