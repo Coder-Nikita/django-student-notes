@@ -41,8 +41,8 @@ def update_note(request, id):
         if form.is_valid():
             form.save()
             return redirect("notes_list")
-        else:
-            form = NoteForm(instance= note)
+    else:
+        form = NoteForm(instance= note)
     return render(request, "notes/update_note.html", {"form": form})
 
 @login_required
