@@ -1,21 +1,26 @@
-{% extends "notes/base.html" %}
+{% load static %}
 
-{% block content %}
+<link rel="stylesheet" href="{% static 'notes/auth.css' %}">
 
-<div class="container mt-5" style="max-width:500px">
+<div class="auth-card">
 
-<h3 class="mb-4">Register</h3>
+<h2>LOGIN</h2>
+<p>Please enter your login and password</p>
 
-<form method="POST">
-
+<form method="post">
 {% csrf_token %}
 
-{{ form.as_p }}
+<input type="text" name="username" placeholder="Username">
 
-<button class="btn btn-success">Create Account</button>
+<input type="password" name="password" placeholder="Password">
+
+<button type="submit">LOGIN</button>
 
 </form>
 
+<div class="auth-footer">
+Don't have an account?
+<a href="/register/">Sign Up</a>
 </div>
 
-{% endblock %}
+</div>

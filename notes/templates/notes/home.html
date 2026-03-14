@@ -1,21 +1,63 @@
-{% extends 'notes/base.html' %}
+{% extends "notes/base.html" %}
 
 {% block content %}
 
-<h2>Your Notes</h2>
+<div class="container text-center mt-5">
 
-{% for note in notes %}
+    <h1 class="display-4">Student Notes</h1>
 
-<div class="card mb-3 p-3">
+    <p class="lead mt-3">
+        Organize your study notes in one simple place.
+        Create, update and manage your notes easily.
+    </p>
 
-<h4>{{ note.title }}</h4>
-<p>{{ note.content }}</p>
+    {% if not user.is_authenticated %}
 
-<a href="/update/{{note.id}}" class="btn btn-warning">Edit</a>
-<a href="/delete/{{note.id}}" class="btn btn-danger">Delete</a>
+    <div class="mt-4">
+
+        <a href="/login/" class="btn btn-primary btn-lg me-3">
+            Login
+        </a>
+
+        <a href="/register/" class="btn btn-outline-primary btn-lg">
+            Register
+        </a>
+
+    </div>
+
+    {% else %}
+
+    <div class="mt-4">
+
+        <a href="/add/" class="btn btn-success btn-lg">
+            Create Your First Note
+        </a>
+
+    </div>
+
+    {% endif %}
 
 </div>
 
-{% endfor %}
+<hr class="my-5">
+
+<div class="row">
+
+<div class="col-md-4">
+<h4>📚 Organize</h4>
+<p>Keep all your study notes in one place.</p>
+</div>
+
+<div class="col-md-4">
+<h4>✏️ Edit</h4>
+<p>Update notes anytime.</p>
+</div>
+
+<div class="col-md-4">
+<h4>🔒 Secure</h4>
+<p>Your notes are visible only to you.</p>
+</div>
+
+</div>
 
 {% endblock %}
