@@ -4,6 +4,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Note
 from .forms import NoteForm
+from django.db.models import Q
+
 
 @login_required
 def home(request):
@@ -69,7 +71,11 @@ def register(request):
 def notes_list(request):
     q = request.GET.get("q")
 
+    notes = Note.objects.filter(user=request.user)
+
     if q:
-        notes = Note.objects.filter(user=request.user, title__icontains=q)
-    else:
-        notes = Note.objects.filter(user=request.user)
+        notes = notes.filter(
+            Q(title__icontains=q) | 
+            Q(content__icontains=q)
+        )    
+    return render(request, 'notes/notes_list.html', {"notes" : notes})
