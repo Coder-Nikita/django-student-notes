@@ -66,9 +66,10 @@ def register(request):
 
     return render(request, "notes/register.html", {"form": form})
 
-q = request.GET.get("q")
+def notes_list(request):
+    q = request.GET.get("q")
 
-if q:
-    notes = Note.objects.filter(user=request.user, title__icontains=q)
-else:
-    notes = Note.objects.filter(user=request.user)
+    if q:
+        notes = Note.objects.filter(user=request.user, title__icontains=q)
+    else:
+        notes = Note.objects.filter(user=request.user)
