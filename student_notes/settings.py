@@ -103,8 +103,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATIC_ROOT = '/home/Nikita18/student_notes/staticfiles'
 STATICFILES_DIR = []
+
+
 
 
 LOGIN_URL = "/login/"
