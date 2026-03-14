@@ -1,3 +1,7 @@
+<div class="row">
+
+{% for note in notes %}
+
 <div class="col-md-6 col-lg-4">
   <div class="card note-card">
 
@@ -6,7 +10,7 @@
       <h5 class="card-title">{{ note.title }}</h5>
 
       <small class="text-muted">
-        {{ note.created_at |date:"M d, Y"}}
+        {{ note.created_at|date:"M d, Y"}}
       </small>
 
       <p class="card-text mt-2">
@@ -30,4 +34,12 @@
     </div>
 
   </div>
+</div>
+
+{% empty %}
+
+<p>No notes found.</p>
+
+{% endfor %}
+
 </div>
