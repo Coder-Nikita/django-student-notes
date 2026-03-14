@@ -3,6 +3,7 @@ from django.contrib.auth import login
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Note
+from .forms import NoteForm
 
 @login_required
 def home(request):
@@ -34,18 +35,19 @@ def update_note(request, id):
     note = get_object_or_404(Note, id=id, user=request.user)
 
     if request.method == "POST":
-        note.title = request.POST["title"]
-        note.content = request.POST["content"]
-        note.save()
-        return redirect("home")
-
-    return render(request, "notes/update_note.html", {"note": note})
+        form = NoteForm(request.POST, instance = note)
+        if form.is_valid():
+            form.save()
+            return redirect("notes_list")
+        else:
+            form = NoteForm(instance= note)
+        return render(request, "notes/update_note.html", {"form": form})
 
 @login_required
 def delete_note(request, id):
     note = get_object_or_404(Note, id=id,user=request.user)
     note.delete()
-    return redirect("home")
+    return redirect("notes_list")
 
 
 def register(request):
@@ -63,3 +65,10 @@ def register(request):
         form = UserCreationForm()
 
     return render(request, "notes/register.html", {"form": form})
+
+q = request.GET.get("q")
+
+if q:
+    notes = Note.objects.filter(user=request.user, title__icontains=q)
+else:
+    notes = Note.objects.filter(user=request.user)

@@ -6,14 +6,9 @@
 
 <form method="POST">
 {% csrf_token %}
+{{ form.as_p }}
 
-<input type="text" name="title" value="{{ note.title }}">
-<br><br>
-
-<textarea name="content">{{ note.content }}</textarea>
-<br><br>
-
-<button type="submit">Update</button>
+<button class="btn btn-primary">Update Note</button>
 
 </form>
 

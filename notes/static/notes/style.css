@@ -1,6 +1,6 @@
 body{
 font-family: Arial;
-background:#f4f4f4;
+background:#f4f6f9;
 padding:40px;
 }
 
@@ -27,4 +27,60 @@ border-radius:5px;
 a{
 text-decoration:none;
 margin-right:10px;
+}
+
+
+
+
+/* note cards */
+
+@media (max-width : 768px) {
+.note-card{
+border:none;
+border-radius:12px;
+box-shadow:0 3px 10px rgba(0,0,0,0.08);
+transition:all 0.2s ease;
+margin-bottom: 20px;
+}
+}
+
+
+
+/* hover animation */
+
+.note-card:hover{
+transform:translateY(-5px);
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+
+/* title */
+
+.note-card h5{
+font-weight:600;
+margin-bottom:10px;
+}
+
+
+/* text */
+
+.note-card p{
+color:#555;
+font-size:14px;
+}
+
+
+/* buttons */
+
+.note-actions{
+display:flex;
+justify-content:flex-end;
+gap:10px;
+margin-top:15px;
+}
+
+/* navbar */
+
+.navbar{
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
 }
